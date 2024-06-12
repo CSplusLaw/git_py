@@ -47,6 +47,10 @@ class Line2D:
             return self.vector1 == other.vector1 and self.vector2 == other.vector2
         else:
             return False
+    
+    def __len__(self):
+        return (int)(((self.vector1.x - self.vector2.x)**2 + (self.vector1.y - self.vector2.y)**2)**0.5)
+    
 
 v1 = Vector2D(10,20)
 v2 = Vector2D(2,5)
@@ -62,4 +66,5 @@ print(f"{v1} == 10 = {v1 == 10}")
 l1 = Line2D(v1,v2)
 print(l1)
 print(f"{l1} == {Line2D(v1,v2)} = {l1 == Line2D(v1,v2)}")
+print(f"length of {l1} = {len(l1)}")
 print("20225122 김상훈")
