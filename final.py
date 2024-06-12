@@ -51,6 +51,22 @@ class Line2D:
     def __len__(self):
         return (int)(((self.vector1.x - self.vector2.x)**2 + (self.vector1.y - self.vector2.y)**2)**0.5)
     
+    def __lt__(self, other):
+        if isinstance(other, Line2D):
+            return len(self) < len(other)
+
+    def __le__(self, other):
+        if isinstance(other, Line2D):
+            return len(self) <= len(other)
+
+    def __gt__(self, other):
+        if isinstance(other, Line2D):
+            return len(self) > len(other)
+
+    def __ge__(self, other):
+        if isinstance(other, Line2D):
+            return len(self) >= len(other)
+
 
 v1 = Vector2D(10,20)
 v2 = Vector2D(2,5)
@@ -67,4 +83,8 @@ l1 = Line2D(v1,v2)
 print(l1)
 print(f"{l1} == {Line2D(v1,v2)} = {l1 == Line2D(v1,v2)}")
 print(f"length of {l1} = {len(l1)}")
+print(f"{l1} < {Line2D(v1,v1)} = {l1 < Line2D(v1,v1)}")
+print(f"{l1} <= {Line2D(v1,v1)} = {l1 <= Line2D(v1,v1)}")
+print(f"{l1} > {Line2D(v1,v1)} = {l1 > Line2D(v1,v1)}")
+print(f"{l1} >= {Line2D(v1,v1)} = {l1 >= Line2D(v1,v1)}")
 print("20225122 김상훈")
