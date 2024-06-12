@@ -26,6 +26,7 @@ class Vector2D:
     def __neg__(self):
         return Vector2D(-self.x, -self.y)
 
+
 v1 = Vector2D(10,20)
 v2 = Vector2D(2,5)
 print(f"{v1} + {v2} = {v1 + v2}")
