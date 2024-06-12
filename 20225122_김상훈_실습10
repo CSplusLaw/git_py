@@ -23,6 +23,7 @@ class Vector2D:
             return self.x == other.x and self.y == other.y
         else:
             return False
+        
     def __neg__(self):
         return Vector2D(-self.x, -self.y)
     
@@ -35,7 +36,17 @@ class Line2D:
         self.__end = end
 
     def __str__(self):
-        return f'{self.__start.x, self.__start.y}-{self.__end.x, self.__end.y}'
+        return f'{self.__start.x,self.__start.y}-{self.__end.x,self.__end.y}'
+    
+    def __eq__(self, value: object):
+        if type(value) is Line2D:
+            return self.__start == value.__start and self.__end == value.__end
+        else:
+            return False
+    
+    def length(self):
+        return self.__start.distance(self.__end)
+
 
 v1 = Vector2D(10,20)
 v2 = Vector2D(2,5)
@@ -51,5 +62,6 @@ print(f"{v1}과 {v2} 사이의 거리 : {v1.distance(v2)}")
 
 l1 = Line2D(v1,v2)
 print(l1)
-
+print(f"{l1} == {l1} = {l1 == l1}")
+print(f"d({l1}) = {l1.length()}")
 print("20225122 김상훈")
