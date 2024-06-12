@@ -42,7 +42,11 @@ class Line2D:
     def __str__(self):
         return f'({self.vector1.x},{self.vector1.y}) - ({self.vector2.x},{self.vector2.y})'
     
-
+    def __eq__(self,other):
+        if type(other) is Line2D:
+            return self.vector1 == other.vector1 and self.vector2 == other.vector2
+        else:
+            return False
 
 v1 = Vector2D(10,20)
 v2 = Vector2D(2,5)
@@ -57,4 +61,5 @@ print(f"{v1} == 10 = {v1 == 10}")
 
 l1 = Line2D(v1,v2)
 print(l1)
+print(f"{l1} == {Line2D(v1,v2)} = {l1 == Line2D(v1,v2)}")
 print("20225122 김상훈")
