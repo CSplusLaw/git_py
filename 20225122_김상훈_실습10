@@ -1,5 +1,5 @@
 class Vector2D:
-    def __init__(self,x,y):
+    def __init__(self, x, y):
         self.x = x
         self.y = y
 
@@ -19,7 +19,7 @@ class Vector2D:
         return Vector2D(self.x / other.x, self.y / other.y)
     
     def __eq__(self, other):
-        if type(other) is Vector2D:
+        if isinstance(other, Vector2D):
             return self.x == other.x and self.y == other.y
         else:
             return False
@@ -27,20 +27,20 @@ class Vector2D:
     def __neg__(self):
         return Vector2D(-self.x, -self.y)
     
-    def distance(self,other):
+    def distance(self, other):
         return ((self.x - other.x) ** 2 + (self.y - other.y) ** 2) ** 0.5
     
 class Line2D:
-    def __init__(self, start : Vector2D, end : Vector2D):
+    def __init__(self, start: Vector2D, end: Vector2D):
         self.__start = start
         self.__end = end
 
     def __str__(self):
-        return f'{self.__start.x,self.__start.y}-{self.__end.x,self.__end.y}'
+        return f'{self.__start}-{self.__end}'
     
-    def __eq__(self, value: object):
-        if type(value) is Line2D:
-            return self.__start == value.__start and self.__end == value.__end
+    def __eq__(self, other: object):
+        if isinstance(other, Line2D):
+            return self.length == other.length
         else:
             return False
     
@@ -49,23 +49,24 @@ class Line2D:
     
     def __lt__(self, other):
         if isinstance(other, Line2D):
-            return self.distance < other.distance
+            return self.length < other.length
 
     def __le__(self, other):
         if isinstance(other, Line2D):
-            return self.distance <= other.distance
+            return self.length <= other.length
 
     def __gt__(self, other):
         if isinstance(other, Line2D):
-            return self.distance > other.distance
+            return self.length > other.length
 
     def __ge__(self, other):
         if isinstance(other, Line2D):
-            return self.distance >= other.distance
+            return self.length >= other.length
 
-v1 = Vector2D(10,20)
-v2 = Vector2D(2,5)
-v3 = Vector2D(11,22)
+v1 = Vector2D(10, 20)
+v2 = Vector2D(2, 5)
+v3 = Vector2D(11, 22)
+
 print(f"{v1} + {v2} = {v1 + v2}")
 print(f"{v1} - {v2} = {v1 - v2}")
 print(f"{v1} * {v2} = {v1 * v2}")
@@ -76,11 +77,11 @@ print(f"{v1} == {v1} = {v1 == v1}")
 print(f"{v1} == 10 = {v1 == 10}")
 print(f"{v1}과 {v2} 사이의 거리 : {v1.distance(v2)}")
 
-l1 = Line2D(v1,v2)
-l2 = Line2D(v2,v3)
+l1 = Line2D(v1, v2)
+l2 = Line2D(v2, v3)
 print(l1)
 print(f"{l1} == {l1} = {l1 == l1}")
-print(f"d({l1}) = {l1.length()}")
+print(f"({l1}) = {l1.length}")
 print(f"{l1} < {l2} = {l1 < l2}")
 print(f"{l1} <= {l2} = {l1 <= l2}")
 print(f"{l1} > {l2} = {l1 > l2}")
