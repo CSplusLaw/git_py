@@ -37,11 +37,11 @@ class Line2D:
     
     def set_vector1(self, vector1) : # 캡슐화를 위한 setter
         if type(vector1) is Vector2D:
-            self.vector1 = vector1
+            self.__vector1 = vector1
         
     def set_vector2(self, vector2) :
         if type(vector2) is Vector2D:
-            self.vector2 = vector2
+            self.__vector2 = vector2
     
     def __str__(self):
         return f'({self.__vector1.x},{self.__vector1.y}) - ({self.__vector2.x},{self.__vector2.y})'
