@@ -32,8 +32,8 @@ class Vector2D:
     
 class Line2D:
     def __init__(self, vector1, vector2):
-        self.vector1 = vector1
-        self.vector2 = vector2
+        self.__vector1 = vector1
+        self.__vector2 = vector2
     
     def set_vector1(self, vector1) : # 캡슐화를 위한 setter
         if type(vector1) is Vector2D:
@@ -44,16 +44,16 @@ class Line2D:
             self.vector2 = vector2
     
     def __str__(self):
-        return f'({self.vector1.x},{self.vector1.y}) - ({self.vector2.x},{self.vector2.y})'
+        return f'({self.__vector1.x},{self.__vector1.y}) - ({self.__vector2.x},{self.__vector2.y})'
     
     def __eq__(self,other):
         if type(other) is Line2D:
-            return self.vector1 == other.vector1 and self.vector2 == other.vector2
+            return self.__vector1 == other.__vector1 and self.__vector2 == other.__vector2
         else:
             return False
     
     def __len__(self):
-        return (int)(((self.vector1.x - self.vector2.x)**2 + (self.vector1.y - self.vector2.y)**2)**0.5)
+        return (int)(((self.__vector1.x - self.__vector2.x)**2 + (self.__vector1.y - self.__vector2.y)**2)**0.5)
     
     def __lt__(self, other):
         if isinstance(other, Line2D):
