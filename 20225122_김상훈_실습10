@@ -25,7 +25,9 @@ class Vector2D:
             return False
     def __neg__(self):
         return Vector2D(-self.x, -self.y)
-
+    
+    def __dis__(self,other):
+        return ((self.x - other.x) ** 2 + (self.y - other.y) ** 2) ** 0.5
 
 v1 = Vector2D(10,20)
 v2 = Vector2D(2,5)
@@ -37,4 +39,5 @@ print(f"-{v1} = {-v1}")
 print(f"{v1} == {v2} = {v1 == v2}")
 print(f"{v1} == {v1} = {v1 == v1}")
 print(f"{v1} == 10 = {v1 == 10}")
+print(f"{v1}과 {v2} 사이의 거리 : {v1.__dis__(v2)}")
 print("20225122 김상훈")
