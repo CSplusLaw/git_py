@@ -26,6 +26,10 @@ class Vector2D:
     def __neg__(self):
         return Vector2D(-self.x, -self.y)
     
+    def distance(self, other):
+        return (int)(((self.x - other.x)**2 + (self.y - other.y)**2)**0.5)
+
+    
 class Line2D:
     def __init__(self, vector1, vector2):
         self.vector1 = vector1
@@ -66,7 +70,7 @@ class Line2D:
     def __ge__(self, other):
         if isinstance(other, Line2D):
             return len(self) >= len(other)
-
+        
 
 v1 = Vector2D(10,20)
 v2 = Vector2D(2,5)
@@ -78,6 +82,7 @@ print(f"-{v1} = {-v1}")
 print(f"{v1} == {v2} = {v1 == v2}")
 print(f"{v1} == {v1} = {v1 == v1}")
 print(f"{v1} == 10 = {v1 == 10}")
+print(f"{v1.distance(v2)}")
 
 l1 = Line2D(v1,v2)
 print(l1)
